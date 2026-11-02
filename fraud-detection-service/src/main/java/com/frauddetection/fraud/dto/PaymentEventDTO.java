@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class PaymentEventDTO {
-
     private String paymentId;
     private String senderId;
     private String receiverId;
