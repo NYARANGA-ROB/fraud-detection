@@ -5,6 +5,7 @@ spring:
   application:
     name: fraud-detection-service
 
+
   jackson:
     serialization:
       write-dates-as-timestamps: false
