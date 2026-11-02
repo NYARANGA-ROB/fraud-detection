@@ -103,8 +103,8 @@ GET   /health                    Health check
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/sourabhk25/fraud-detection-system.git
-cd fraud-detection-system
+git clone https://github.com/NYARANGA-ROB/fraud-detection.git
+cd fraud-detection
 ```
 
 ### 2. Start infrastructure
