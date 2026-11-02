@@ -22,6 +22,7 @@ public class GlobalExceptionHandler {
                 "message", ex.getMessage()
         ));
     }
+    
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleException(Exception ex) {
