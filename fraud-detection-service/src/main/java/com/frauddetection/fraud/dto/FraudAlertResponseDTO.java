@@ -4,6 +4,7 @@ import com.frauddetection.fraud.model.RiskLevel;
 import lombok.*;
 import java.math.BigDecimal;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
