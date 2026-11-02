@@ -6,6 +6,7 @@ from app.config.settings import settings
 import json
 import logging
 
+
 logger = logging.getLogger(__name__)
 
 class FraudAnalyzer:
