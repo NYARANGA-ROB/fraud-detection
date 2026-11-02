@@ -1,5 +1,4 @@
 package com.frauddetection.fraud.controller;
-
 import com.frauddetection.fraud.dto.FraudAlertResponseDTO;
 import com.frauddetection.fraud.model.AlertStatus;
 import com.frauddetection.fraud.model.RiskLevel;
