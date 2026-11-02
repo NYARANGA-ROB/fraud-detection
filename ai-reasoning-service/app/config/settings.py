@@ -15,6 +15,7 @@ class Settings:
         "PAYMENT_SERVICE_URL",
         "http://localhost:8081"
     )
+    
     fraud_service_url: str = os.getenv(
         "FRAUD_SERVICE_URL",
         "http://localhost:8082"
