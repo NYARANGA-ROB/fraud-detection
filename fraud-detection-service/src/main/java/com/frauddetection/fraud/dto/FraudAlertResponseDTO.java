@@ -1,5 +1,4 @@
 package com.frauddetection.fraud.dto;
-
 import com.frauddetection.fraud.model.AlertStatus;
 import com.frauddetection.fraud.model.RiskLevel;
 import lombok.*;
