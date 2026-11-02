@@ -19,6 +19,7 @@ class FraudAnalysisRequest(BaseModel):
     risk_score: float
     risk_level: RiskLevel
     risk_reasons: List[str]
+    
 
 class FraudAnalysisResponse(BaseModel):
     payment_id: str
