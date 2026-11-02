@@ -16,6 +16,7 @@ import java.util.List;
 @RequestMapping("/api/v1/fraud")
 @RequiredArgsConstructor
 @Slf4j
+    
 @Tag(name = "Fraud Detection API", description = "Endpoints for fraud alerts and risk scores")
 public class FraudDetectionController {
 
