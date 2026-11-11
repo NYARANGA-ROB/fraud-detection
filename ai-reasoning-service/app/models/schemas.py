@@ -2,7 +2,6 @@ from pydantic import BaseModel
 from typing import List, Optional
 from enum import Enum
 
-
 class RiskLevel(str, Enum):
     LOW = "LOW"
     MEDIUM = "MEDIUM"
