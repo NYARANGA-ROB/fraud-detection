@@ -8,6 +8,7 @@ class RiskLevel(str, Enum):
     HIGH = "HIGH"
     CRITICAL = "CRITICAL"
 
+
 class FraudAnalysisRequest(BaseModel):
     payment_id: str
     sender_id: str
