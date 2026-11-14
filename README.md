@@ -140,6 +140,40 @@ cd ai-reasoning-service && source venv/bin/activate && python main.py
 cd api-gateway && mvn spring-boot:run
 ```
 
+### 5. One-command developer workflow
+The project includes helper scripts to bootstrap the infrastructure and launch the full stack with a single command:
+
+```bash
+# Windows PowerShell
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 start
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 status
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 stop
+powershell -ExecutionPolicy Bypass -File .\scripts\dev.ps1 test
+
+# macOS / Linux
+./scripts/dev.sh start
+./scripts/dev.sh status
+./scripts/dev.sh stop
+./scripts/dev.sh test
+```
+
+These scripts also create the AI virtual environment automatically and write service logs to the `logs/` directory.
+
+### 6. First-time setup and CI smoke checks
+For a fresh environment bootstrapping flow, use the repo-level scripts:
+
+```bash
+# Windows PowerShell
+powershell -ExecutionPolicy Bypass -File .\bootstrap.ps1
+powershell -ExecutionPolicy Bypass -File .\smoke-test.ps1
+
+# macOS / Linux
+./bootstrap.sh
+./smoke-test.sh
+```
+
+The bootstrap script ensures Java + Python tooling are present, installs AI dependencies, starts infrastructure via Docker Compose, and runs the service test suite. The smoke-test script is suitable for CI and quick validation after a code change.
+
 ---
 
 ## 🔌 Ports & URLs
