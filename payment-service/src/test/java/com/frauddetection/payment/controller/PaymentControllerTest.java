@@ -128,4 +128,12 @@ class PaymentControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("FLAGGED"));
     }
+
+    @Test
+    @DisplayName("PATCH /api/v1/payments/{id}/status - Should reject an invalid status value")
+    void shouldReturn400WhenStatusIsInvalid() throws Exception {
+        mockMvc.perform(patch("/api/v1/payments/pay-001/status")
+                        .param("status", "INVALID_STATUS"))
+                .andExpect(status().isBadRequest());
+    }
 }

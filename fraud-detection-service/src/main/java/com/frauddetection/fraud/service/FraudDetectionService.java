@@ -4,6 +4,7 @@ import com.frauddetection.fraud.client.PaymentServiceClient;
 import com.frauddetection.fraud.dto.FraudAlertResponseDTO;
 import com.frauddetection.fraud.dto.PaymentEventDTO;
 import com.frauddetection.fraud.dto.RiskAssessmentDTO;
+import com.frauddetection.fraud.exception.FraudAlertNotFoundException;
 import com.frauddetection.fraud.model.AlertStatus;
 import com.frauddetection.fraud.model.FraudAlert;
 import com.frauddetection.fraud.model.RiskLevel;
@@ -67,8 +68,7 @@ public class FraudDetectionService {
 
     public FraudAlertResponseDTO getAlertByPaymentId(String paymentId) {
         FraudAlert alert = fraudAlertRepository.findByPaymentId(paymentId)
-                .orElseThrow(() -> new RuntimeException(
-                        "Fraud alert not found for payment: " + paymentId));
+                .orElseThrow(() -> new FraudAlertNotFoundException(paymentId));
         return mapToResponseDTO(alert);
     }
 

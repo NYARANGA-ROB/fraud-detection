@@ -3,6 +3,8 @@ package com.frauddetection.payment.service;
 import com.frauddetection.payment.dto.PaymentEventDTO;
 import com.frauddetection.payment.dto.PaymentRequestDTO;
 import com.frauddetection.payment.dto.PaymentResponseDTO;
+import com.frauddetection.payment.exception.InvalidPaymentStatusException;
+import com.frauddetection.payment.exception.PaymentNotFoundException;
 import com.frauddetection.payment.kafka.PaymentEventProducer;
 import com.frauddetection.payment.model.Payment;
 import com.frauddetection.payment.model.PaymentStatus;
@@ -64,7 +66,7 @@ public class PaymentService {
     public PaymentResponseDTO getPaymentById(String paymentId) {
         log.info("Fetching payment by id: {}", paymentId);
         Payment payment = paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new RuntimeException("Payment not found: " + paymentId));
+                .orElseThrow(() -> new PaymentNotFoundException(paymentId));
         return mapToResponseDTO(payment, "Payment retrieved successfully");
     }
 
@@ -79,9 +81,13 @@ public class PaymentService {
     @Transactional
     @CacheEvict(value = "payments", key = "#paymentId")
     public PaymentResponseDTO updatePaymentStatus(String paymentId, PaymentStatus status) {
+        if (status == null) {
+            throw new InvalidPaymentStatusException("null");
+        }
+
         log.info("Updating payment {} status to {}", paymentId, status);
         Payment payment = paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new RuntimeException("Payment not found: " + paymentId));
+                .orElseThrow(() -> new PaymentNotFoundException(paymentId));
         payment.setStatus(status);
         Payment updated = paymentRepository.save(payment);
         return mapToResponseDTO(updated, "Payment status updated");
